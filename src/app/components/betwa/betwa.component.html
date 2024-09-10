@@ -1,0 +1,15 @@
+<p>betwa works!</p>
+<div>
+  <hr />
+  @if(isLogin){
+  <ng-content select="app-testng-content"></ng-content>
+  }
+  <hr />
+  <ng-content></ng-content>
+</div>
+<p>betwa works!</p>
+<button (click)="handleClick()">click me</button>
+<ng-content select="header"></ng-content>
+
+<!-- Component template -->
+

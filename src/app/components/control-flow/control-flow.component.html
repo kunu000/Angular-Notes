@@ -1,0 +1,71 @@
+<!-- if , else syntax -->
+
+@if(isLoggedIn){
+<p>Hello world</p>
+} @else {
+<p>Bye world</p>
+}
+
+<!-- Not recommended way (longer syntax) -->
+<!-- <p>@if(isLoggedIn){ Hello world } @else { Bye world }</p> -->
+
+<!-- else if syntax -->
+@if(sum > 5){
+<p>sum is greater than 5</p>
+} @else if(sum == 5){
+<p>sum is equal to 5</p>
+} @else {
+<p>sum is less than 5</p>
+}
+
+<!-- async pipe -->
+
+<!-- @if (apiData$ | async; as apiData) {
+<p>{{ apiData }}</p>
+} -->
+
+<ul>
+  <!-- @if (apiData$ | async; as apiData) { -->
+  @for (item of (apiData$ | async) ; track $index) {
+  <li>{{ item.title }}</li>
+  } @empty {
+  <h3>loading...</h3>
+  }
+  <!-- } -->
+</ul>
+
+<!-- @for loop -->
+<!-- Inside @for contents, several implicit variables are always available: -->
+<!--
+$count -	Number of items in a collection iterated over
+$index	- Index of the current row
+$first	- Whether the current row is the first row
+$last	- Whether the current row is the last row
+$even	- Whether the current row index is even
+$odd	- Whether the current row index is odd -->
+
+<!-- You can optionally include an @empty section immediately after the @for block content. The content of the @empty block displays when there are no items: -->
+@if (userData.length > 0) {
+<ul>
+  @for (user of userData; track $index;let f = $first, l = $last) {
+  {{
+    f ? "--------------------------" : ""
+  }}
+  <li>{{ $index + " " + user.name + " " + $count }}</li>
+  {{
+    l ? "--------------------------" : ""
+  }}
+  } @empty {
+  <li>There are no items in the userData</li>
+  }
+</ul>
+}
+
+<!-- @switch -->
+@switch (expression) { @case (1) {
+<p>case 1</p>
+} @case (3) {
+<p>case 3</p>
+} @default {
+<p>case Infinity</p>
+} }

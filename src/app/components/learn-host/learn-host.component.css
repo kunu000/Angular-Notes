@@ -1,0 +1,8 @@
+:host {
+  color: whitesmoke;
+  font-size: 20px;
+}
+
+:host div {
+  background-color: rgb(168, 168, 255);
+}

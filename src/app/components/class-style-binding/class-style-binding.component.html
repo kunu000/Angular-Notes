@@ -1,0 +1,43 @@
+<!-- Class Binding -->
+<!-- single class binding -->
+<!-- class first is assign if isClass is truthy -->
+<div [class.first]="isClass">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, sit!
+</div>
+
+<!-- no class is assign -->
+<div [class.sec]="undefined">Lorem ipsum dolor sit amet.</div>
+
+<!-- multiple class binding -->
+<!-- className and classList will product h1,h2,h3 a single class -->
+<div [className]="classArray">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+</div>
+
+<!-- this will assign h1 h2 and h3 classes to div -->
+<div [class]="classArray">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit.2
+</div>
+
+<div [class]="classString">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit.3
+</div>
+<hr />
+
+<!-- Style Binding -->
+
+<div [style.height]="height">
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore, ipsum!
+</div>
+
+<div [style.width.px]="width">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, quasi!
+</div>
+
+<div [style]="styleObj">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, quasi!
+</div>
+
+<div [style]="styleString">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, dignissimos!
+</div>

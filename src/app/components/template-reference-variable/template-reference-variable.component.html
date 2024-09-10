@@ -1,0 +1,10 @@
+@if(isTrue){
+<input type="text" #input1 />
+<button (click)="submitData(input1.value)">Get Value</button>
+}
+
+<!-- good example -->
+<!-- <input type="text" #box id="hero-name" (keyup.enter)="addHero(box.value); box.value=''" placeholder="hero name"> -->
+
+<!-- can access input1 here -->
+<!-- <button (click)="submitData(input1.value)">Get Value</button> -->

@@ -1,0 +1,6 @@
+@if(userData){
+<p>parent {{ userData.name }}</p>
+<button (click)="updateUserData()">click me</button>
+<button routerLink="/parent2">Go to parent2</button>
+<app-child />
+}

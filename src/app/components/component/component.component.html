@@ -1,0 +1,51 @@
+<!-- How to render dynamic data -->
+<!-- we use double curly braces syntax -->
+<h1>{{ title }}</h1>
+
+<!-- Property Binding -->
+<!-- How to set the dynamic value of standard html attribute -->
+<!-- For this we wrap the attribute in square brackets to tell the angular that the value is interpreted as Js statement instead of plain text -->
+<button [disabled]="isDisabled">Click Me!</button>
+
+<!-- How to set the dynamic value of custom html attribute -->
+<!-- For this we wrap the custom attribute in square brackets to tell the angular that the value is interpreted as Js statement instead of plain text and we need to prepend the attr. word to the custom attribute. -->
+@if(isAdmin){
+<button data-user-id="123" #Btn>Click Me!</button>
+}
+<!-- <button [attr.data-user-id]="userId" #Btn>{{ userId }}</button> -->
+
+<!-- # Conditional Rendering -->
+<!-- @if block - show or hide the content of template file -->
+<!-- @else block - show the fallback UI when if condition become false -->
+
+<!-- @for block - are used to render the list of items -->
+
+@if (isAdmin) {
+<h2>Erase Database</h2>
+} @else {
+<h2>Admin Account required</h2>
+}
+
+<ul>
+  @for (item of usersData; track $index) {
+  <li>{{ item.name }} | {{ item.age }}</li>
+  }
+</ul>
+
+<!-- # Event listner to an element -->
+<!-- To add an event listner to an element we need to add the attribute with the event name 
+inside the parantheses and then specify the Js Statement that we want to run when event fires. -->
+
+<button (click)="handleClick()">Click Me!</button>
+
+<!-- In Angular, $event is a special variable that holds the event object when an event is triggered. It provides details about the event, such as the type of event, the element that triggered it, and other relevant information. We define it inside the parentheses of event handler function.  -->
+<!-- Key Properties of the Event Object:
+* type: The type of event (e.g., 'click').
+* target: The element that triggered the event.
+* currentTarget: The element on which the event listener is registered.
+* timeStamp: The time at which the event was created.
+* preventDefault(): Prevents the default action associated with the event. -->
+
+<button (dblclick)="handleDblClick($event)" value="100">
+  Click Me Double!
+</button>

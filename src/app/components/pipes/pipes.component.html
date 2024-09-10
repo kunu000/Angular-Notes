@@ -1,0 +1,98 @@
+<h1>Pipes</h1>
+
+<h3>Date = {{ currentDate }}</h3>
+<ul>
+  <li>Date: {{ currentDate | date }}</li>
+  <li>Short Date: {{ currentDate | date : "shortDate" }}</li>
+  <li>Medium Date: {{ currentDate | date : "mediumDate" }}</li>
+  <li>Long Date: {{ currentDate | date : "longDate" }}</li>
+  <li>Full Date: {{ currentDate | date : "fullDate" }}</li>
+  <li>Short Time: {{ currentDate | date : "shortTime" }}</li>
+  <li>Medium Time: {{ currentDate | date : "mediumTime" }}</li>
+  <li>Long Time: {{ currentDate | date : "longTime" }}</li>
+  <li>Full Time: {{ currentDate | date : "fullTime" }}</li>
+  <li>Custom Format 1 (MM/dd/yyyy): {{ currentDate | date : "MM/dd/yyyy" }}</li>
+  <li>Custom Format 2 (yyyy-MM-dd): {{ currentDate | date : "yyyy-MM-dd" }}</li>
+  <li>Custom Format 3 (dd/MM/yyyy): {{ currentDate | date : "dd/MM/yyyy" }}</li>
+  <li>
+    Custom Format 4 (full datetime):
+    {{ currentDate | date : "EEEE, MMMM d, y, h:mm:ss a zzzz" }}
+  </li>
+  <li>
+    Custom Format 5 (short datetime):
+    {{ currentDate | date : "M/d/yy, h:mm a" }}
+  </li>
+  <li>
+    Custom Format 6 (ISO): {{ currentDate | date : "yyyy-MM-ddTHH:mm:ssZ" }}
+  </li>
+</ul>
+
+<h3>Uppercase</h3>
+<ul>
+  <li>String: {{ str | uppercase }}</li>
+  <li>String: {{ str | uppercase | lowercase }}</li>
+</ul>
+
+<h3>LowerCase</h3>
+<ul>
+  <li>{{ str | lowercase }}</li>
+</ul>
+
+<h3>Salary Formats</h3>
+<ul>
+  <li>Default: {{ num | currency }}</li>
+  <li>USD Symbol: {{ num | currency : "USD" }}</li>
+  <li>EUR Symbol: {{ num | currency : "EUR" }}</li>
+  <li>INR Symbol: {{ num | currency : "INR" }}</li>
+  <li>No Decimal: {{ num | currency : "USD" : "symbol" : "1.0-0" }}</li>
+  <li>Two Decimals: {{ num | currency : "USD" : "symbol" : "1.2-2" }}</li>
+  <li>Four Decimals: {{ num | currency : "USD" : "symbol" : "1.4-4" }}</li>
+</ul>
+
+<h3>Decimal Pipe</h3>
+<ul>
+  <li>Default : {{ num2 }}</li>
+  <li>{{ num2 | number }}</li>
+  <!-- 
+  1 is the minimum number of integer digits.
+  1 is the minimum number of fraction digits.
+  1 is the maximum number of fraction digits. -->
+  <li>{{ num2 | number : "1.1-1" }}</li>
+
+  <!-- 
+  3 is the minimum number of integer digits.
+  3 is the minimum number of fraction digits.
+  4 is the maximum number of fraction digits. -->
+  <li>{{ num2 | number : "3.3-4" }}</li>
+</ul>
+
+<h3>Percentage Pipe</h3>
+<ul>
+  <li>{{ per | percent : "1.2-2" }}</li>
+  <li>{{ per | percent : "1.0-0" }}</li>
+</ul>
+
+<h3>Json Pipe</h3>
+<ul>
+  <li>Default : {{ obj }}</li>
+  <li>{{ obj | json }}</li>
+</ul>
+
+<h3>Custom Pipe</h3>
+<ul>
+  <li>{{ 10 | custom : 3 }}</li>
+  <li>{{ 10 | custom }}</li>
+  <li>{{ per > 0.45 ? 10 : (20 | custom) }}</li>
+  <!-- above expression parsed as -->
+  <li>{{ per > 0.45 ? 10 : (20 | custom) }}</li>
+  <!-- correct way to do -->
+  <li>{{ (per < 0.45 ? 10 : 20) | custom }}</li>
+</ul>
+
+<h3>Custom Pipe 2</h3>
+<ul>
+  @for (item of (heroes | filterArray); track $index) {
+  <li>{{ item.name }}</li>
+  }
+</ul>
+<button (click)="addNewHero()">Add New Hero</button>

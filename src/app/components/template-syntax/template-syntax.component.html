@@ -1,0 +1,91 @@
+<!-- Interpolation -->
+<!-- Interpolation is a one-way data-binding technique. It allow us to insert expression from the component’s class to the template of it. It uses double curly braces {{}} syntax to insert expression into the template and we write expression within these curly braces. -->
+<h1>Hello {{ "there" && name }}</h1>
+
+<!-- The following operators in template expression syntax and template statement are not allowed:
+1) new , typeof, instanceof
+2) Increment and decrement operators, ++ and --
+3) Operator assignment, such as +=, -= ...
+4) The bitwise operators, such as | and &
+5) The pipe operator -->
+
+<!-- Template expression also does't support = , ; and , -->
+
+<ul>
+  <!-- Errors -->
+  <!-- <li>{{num++}}</li> -->
+  <!-- <li>{{--num}}</li> -->
+  <!-- <li>{{num += 4}}</li> -->
+  <!-- <li>{{new Date()}}</li> -->
+  <!-- <li>{{num & 1}}</li> -->
+  <!-- <li>{{num | 1}}</li> -->
+</ul>
+
+<!-- Template statements are methods or properties that we can use in our template file to respond to user events.  -->
+<!-- In the below example deleteProducts() is the template statement -->
+<button (click)="deleteProducts()">click me</button>
+
+<!-- Like template expressions, template statements use a language that looks like JavaScript. However, the parser for template statements differs from the parser for template expressions. In addition, the template statements parser specifically supports both basic assignment (=) and chaining expressions with semicolons (;). -->
+<button (click)="num = 4">click me</button>
+<p>{{ num }}</p>
+
+<!-- Error -->
+<!-- Reason/Best Practices: https://angular.dev/guide/templates/template-statements#statement-best-practices -->
+<!-- <button (click)="console.log('hi there')"></button> -->
+
+<!-- Property Binding -->
+<!-- Property binding is a one-way data-binding technique to dynamically set the value of standard DOM property in an HTML element. To use this, we need to wrapped the property in square brackets to inform Angular that the value assign to it should be interpreted as a JavaScript-like statement instead of a plain string. -->
+<!-- In the below example disabled is the property not attribute -->
+<button [contentEditable]="true" #dd>Click Here!</button>
+<!-- <button disabled contenteditable="true" #dd>sdfdsf</button> -->
+
+<!-- Attribute Binding -->
+<!-- Attribute Binding is a one-way data-binding techniques to dynamically set the value of HTML attributes. This is mainly useful for attributes that do not have corresponding DOM properties (like custom attributes, colspan etc.). To use this, we need to add attr. before the attribute name and wrapped the attribute in square brackets to inform Angular that the value assign to it should be interpreted as a JavaScript-like statement instead of a plain string.  -->
+
+<table>
+  <thead>
+    <tr>
+      <!-- attribute -->
+      <th [attr.colspan]="colspan" #th>Header</th>
+      <!-- property -->
+      <!-- <th [colSpan]="2">Header</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>first</td>
+      <td>second</td>
+    </tr>
+    <tr>
+      <td>first</td>
+      <td>second</td>
+    </tr>
+    <tr>
+      <td>first</td>
+      <td>second</td>
+    </tr>
+    <tr>
+      <td>first</td>
+      <td>second</td>
+    </tr>
+  </tbody>
+</table>
+
+<input
+  type="text"
+  (input)="handleInput($event)"
+  [attr.value]="searchText"
+  class="hello"
+/>
+<input
+  type="text"
+  (input)="handleInput($event)"
+  [value]="'Henry'"
+  [class]="'hello'"
+/>
+
+<p>{{ null }}</p>
+<p>{{ undefined }}</p>
+<p>{{ [1, 2, 3] }}</p>
+<p>{{ 34 }}</p>
+<p>{{ { name: "kunal" } }}</p>

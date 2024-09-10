@@ -1,0 +1,15 @@
+.active {
+  color: blueviolet;
+  font-weight: 700;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px 25px;
+}
